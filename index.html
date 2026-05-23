@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>番茄女频新书榜 · 风向标 | 每日女频趋势追踪</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <meta name="description" content="番茄小说女频新书榜趋势分析与风向标">
 </head>
@@ -15,8 +12,8 @@
         <!-- 侧边栏 -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <h1>🏆 番茄风向标</h1>
-                <p class="sidebar-subtitle">👗 女频新书榜追踪</p>
+                <h1>番茄风向标</h1>
+                <p class="sidebar-subtitle">女频新书榜追踪</p>
                 <p id="update-date" class="update-date">加载中...</p>
             </div>
             <nav class="category-nav">
@@ -29,6 +26,7 @@
         <!-- 主内容区 -->
         <main class="main-content">
             <header class="main-header">
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="菜单">☰</button>
                 <div class="header-left">
                     <h2 id="current-category-title">全部分类</h2>
                 </div>
@@ -41,14 +39,12 @@
                     <div class="date-picker-wrap">
                         <button class="date-nav-btn" id="date-prev" aria-label="前一天" title="前一天">◀</button>
                         <button class="date-picker-btn" id="date-picker-btn">
-                            <span class="date-icon">📅</span>
+                            <span class="date-icon">DATE</span>
                             <span id="date-display">加载中...</span>
                         </button>
                         <button class="date-nav-btn" id="date-next" aria-label="后一天" title="后一天">▶</button>
                         <input type="date" id="date-input" class="date-input-hidden">
                     </div>
-                    <!-- 移动端菜单按钮 -->
-                    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="菜单">☰</button>
                 </div>
             </header>
 
@@ -56,7 +52,7 @@
             <section class="trend-panel" id="trend-panel">
                 <div class="trend-stats" id="trend-stats"></div>
                 <div class="trend-ai" id="trend-ai">
-                    <div class="ai-label">📊 AI 风向分析</div>
+                    <div class="ai-label">AI Signal Brief</div>
                     <div class="ai-content" id="ai-content"></div>
                 </div>
             </section>

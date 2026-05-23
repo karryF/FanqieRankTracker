@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========== Copy Toast ==========
     const copyToast = document.createElement('div');
     copyToast.className = 'copy-toast';
-    copyToast.textContent = '✅ 书本信息已复制';
+    copyToast.textContent = '书本信息已复制';
     document.body.appendChild(copyToast);
     let toastTimer = null;
 
@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
         navigator.clipboard.writeText(text).then(() => {
             const btn = e.currentTarget;
             btn.classList.add('copied');
-            btn.textContent = '✅ 已复制';
+            btn.textContent = '已复制';
             showCopyToast();
             setTimeout(() => {
                 btn.classList.remove('copied');
-                btn.textContent = '📋 复制信息';
+                btn.textContent = '复制信息';
             }, 1500);
         }).catch(() => {
             // Fallback for older browsers
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         copyToast.classList.add('show');
         toastTimer = setTimeout(() => {
             copyToast.classList.remove('show');
-            copyToast.textContent = '✅ 书本信息已复制';
+            copyToast.textContent = '书本信息已复制';
         }, 2500);
     }
 
@@ -389,22 +389,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const chips = [];
 
         if (trend.new_count > 0) {
-            chips.push({ icon: '🆕', text: `${trend.new_count} 本新上榜`, cls: 'new-entry' });
+            chips.push({ icon: 'NEW', text: `${trend.new_count} 本新上榜`, cls: 'new-entry' });
         }
         if (trend.dropped_count > 0) {
-            chips.push({ icon: '📉', text: `${trend.dropped_count} 本掉出`, cls: 'down' });
+            chips.push({ icon: 'OUT', text: `${trend.dropped_count} 本掉出`, cls: 'down' });
         }
         if (trend.top_risers && trend.top_risers.length > 0) {
             trend.top_risers.forEach(r => {
-                chips.push({ icon: '📈', text: `${r.title} ${r.change}`, cls: 'up' });
+                chips.push({ icon: 'UP', text: `${r.title} ${r.change}`, cls: 'up' });
             });
         }
         if (trend.reads_growth && trend.reads_growth.length > 0) {
-            chips.push({ icon: '🔥', text: `${trend.reads_growth[0].title} ${trend.reads_growth[0].growth}`, cls: 'up' });
+            chips.push({ icon: 'HOT', text: `${trend.reads_growth[0].title} ${trend.reads_growth[0].growth}`, cls: 'up' });
         }
 
         if (chips.length === 0) {
-            chips.push({ icon: '📊', text: '榜单无明显变动', cls: '' });
+            chips.push({ icon: 'STABLE', text: '榜单无明显变动', cls: '' });
         }
 
         chips.forEach(chip => {
@@ -453,23 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        let index = 0;
-        const speed = 25; // ms per char
-
-        function type() {
-            if (index < text.length) {
-                // During typing, show escaped plain text with cursor
-                const displayed = text.substring(0, index + 1);
-                aiContent.innerHTML = escapeHtml(displayed) + '<span class="cursor"></span>';
-                index++;
-                typingTimer = setTimeout(type, speed);
-            } else {
-                // Done typing — render full markdown
-                aiContent.innerHTML = renderMarkdown(text);
-            }
-        }
-
-        type();
+        aiContent.innerHTML = renderMarkdown(text);
     }
 
     function escapeHtml(str) {
@@ -530,11 +514,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="book-info">
                     <h3 class="book-title" title="${escapeAttr(book.title)}">${escapeHtml(book.title)}</h3>
                     <div class="book-meta">
-                        <span class="book-author">✍️ ${escapeHtml(book.author)}</span>
-                        <span class="book-reads">🔥 ${escapeHtml(book.reads)}</span>
+                        <span class="book-author">${escapeHtml(book.author)}</span>
+                        <span class="book-reads">${escapeHtml(book.reads)}</span>
                     </div>
                     <p class="book-intro">${escapeHtml(book.intro)}</p>
-                    <button class="book-copy-btn" type="button">📋 复制信息</button>
+                    <button class="book-copy-btn" type="button">复制信息</button>
                 </div>
             `;
 
